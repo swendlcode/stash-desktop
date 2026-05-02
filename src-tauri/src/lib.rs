@@ -9,7 +9,7 @@ pub mod state;
 
 #[cfg(target_os = "macos")]
 use tauri::menu::{AboutMetadata, CheckMenuItem, Menu, MenuBuilder, MenuItem, SubmenuBuilder};
-use tauri::{Emitter, Listener, Manager};
+use tauri::{Emitter, Manager};
 #[cfg(target_os = "macos")]
 use tauri::Runtime;
 #[cfg(target_os = "macos")]
@@ -297,6 +297,8 @@ pub fn run() {
                     update_navigate_checks(app, page);
                 }
             }
+            #[cfg(not(target_os = "macos"))]
+            let _ = (app, event);
         })
         .invoke_handler(tauri::generate_handler![
             commands::library_commands::scan_folder,
