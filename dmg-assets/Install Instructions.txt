@@ -1,0 +1,16 @@
+Stack — Install Instructions
+─────────────────────────────
+
+1. Drag Stack.app to the Applications folder on the right.
+
+2. Launch Stack from Applications or Spotlight.
+
+3. If macOS says "Stack is damaged and can't be opened",
+   open Terminal and run:
+
+   xattr -rd com.apple.quarantine /Applications/Stack.app
+
+   Then launch normally.
+
+─────────────────────────────
+stack.swendl.com

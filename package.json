@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "tauri": "tauri",
     "db:clear": "rm -f \"$HOME/Library/Application Support/app.stack.desktop/stack.db\" \"$HOME/Library/Application Support/app.stack.desktop/stack.db-wal\" \"$HOME/Library/Application Support/app.stack.desktop/stack.db-shm\"",
-    "tauri:dev:cleardb": "npm run db:clear && npm run tauri dev"
+    "tauri:dev:cleardb": "npm run db:clear && npm run tauri dev",
+    "build:dmg": "bash scripts/build-dmg.sh"
   },
   "dependencies": {
     "@crabnebula/tauri-plugin-drag": "^2.1.0",

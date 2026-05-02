@@ -15,6 +15,20 @@ Browse, filter by BPM/key, preview audio and MIDI, and organize your own library
 
 **Download:** [stack.swendl.com](https://stack.swendl.com)
 
+## Installation (macOS)
+
+1. Download the `.dmg` from the releases page or [stack.swendl.com](https://stack.swendl.com)
+2. Open the DMG and drag **Stack.app** to your Applications folder
+3. If macOS says _"Stack is damaged and can't be opened"_, run this once in Terminal:
+
+```bash
+xattr -rd com.apple.quarantine /Applications/Stack.app
+```
+
+4. Launch Stack from Applications
+
+> This warning appears because the app is not yet notarized with Apple. The command removes the quarantine flag macOS applies to downloaded files.
+
 ## Features
 
 - Offline-first desktop app
