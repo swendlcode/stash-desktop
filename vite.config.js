@@ -13,4 +13,24 @@ export default defineConfig(async () => ({
             : undefined,
         watch: { ignored: ['**/src-tauri/**'] },
     },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules/react/') || id.includes('node_modules/react-dom/')) {
+                        return 'react-vendor';
+                    }
+                    if (id.includes('@tanstack')) {
+                        return 'tanstack';
+                    }
+                    if (id.includes('zustand')) {
+                        return 'state';
+                    }
+                    if (id.includes('@tauri-apps')) {
+                        return 'tauri';
+                    }
+                },
+            },
+        },
+    },
 }));
