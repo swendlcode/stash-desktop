@@ -1,0 +1,10 @@
+{
+  "identifier": "autostart",
+  "description": "Autostart permissions for Stack",
+  "windows": ["main"],
+  "permissions": [
+    "autostart:allow-enable",
+    "autostart:allow-disable",
+    "autostart:allow-is-enabled"
+  ]
+}

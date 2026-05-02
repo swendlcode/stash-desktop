@@ -1,0 +1,26 @@
+node_modules
+dist
+dist-ssr
+*.local
+.vite
+
+# Rust
+target
+src-tauri/target
+src-tauri/gen
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+
+# Claude Code
+.claude/
+CLAUDE.md
+
+# Local research / outreach notes
+research/

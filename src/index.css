@@ -1,0 +1,331 @@
+/* DM Mono for monospaced numbers/code — must precede all other rules */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+/* ── Local fonts ─────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-MediumItalic.ttf') format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-SemiBoldItalic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-BoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-ExtraBoldItalic.ttf') format('truetype');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stara';
+  src: url('/src/assets/font/Stara-BlackItalic.ttf') format('truetype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Stack theme tokens.
+
+  Tokens are stored as space-separated RGB triplets (no rgb() wrapper, no
+  commas) so Tailwind's palette can compose them with `<alpha-value>` —
+  e.g. `bg-stack-fire/10` resolves to `rgb(var(--stack-fire) / 0.1)`. This
+  pattern is required for opacity modifiers to work on var-backed colors.
+
+  Direct CSS consumers (sliders, body, .badge) wrap the triplet themselves:
+  `background: rgb(var(--stack-fire));` or use the semantic --color-* vars
+  which already include the rgb() wrapper.
+
+  Naming caveat: --stack-black / --stack-white are the brand tokens used as
+  background / foreground. In the light theme their VALUES flip (so the names
+  read backwards but render correctly). Kept for compat with 144 existing
+  usages. New code should prefer --color-* semantic tokens.
+*/
+:root {
+  --stack-black: 12 12 12;       /* #0c0c0c */
+  --stack-fire: 242 97 63;       /* #f2613f */
+  --stack-white: 247 247 247;    /* #f7f7f7 */
+
+  --gray-900: 17 17 17;          /* #111111 */
+  --gray-800: 26 26 26;          /* #1a1a1a */
+  --gray-700: 36 36 36;          /* #242424 */
+  --gray-600: 51 51 51;          /* #333333 */
+  --gray-500: 85 85 85;          /* #555555 */
+  --gray-400: 136 136 136;       /* #888888 */
+  --gray-300: 170 170 170;       /* #aaaaaa */
+  --gray-200: 204 204 204;       /* #cccccc */
+  --gray-100: 238 238 238;       /* #eeeeee */
+
+  --color-bg: rgb(var(--stack-black));
+  --color-surface: rgb(var(--gray-800));
+  --color-surface-alt: rgb(var(--gray-700));
+  --color-border: rgb(var(--gray-600));
+  --color-text: rgb(var(--stack-white));
+  --color-text-muted: rgb(var(--gray-400));
+  --color-text-subtle: rgb(var(--gray-500));
+  --color-accent: rgb(var(--stack-fire));
+  --color-accent-hover: #ff7a5a;
+
+  color-scheme: dark;
+}
+
+/* Light theme — semantic flip. Same names, inverted values.
+   `bg-gray-900` now resolves to white-ish; `text-stack-white` to near-black.
+   The fire accent gets nudged slightly darker for contrast on light surfaces. */
+[data-theme="light"] {
+  --stack-black: 255 255 255;    /* #ffffff page background */
+  --stack-fire: 232 90 58;       /* #e85a3a slightly punchier on white */
+  --stack-white: 15 15 16;       /* #0f0f10 primary foreground */
+
+  --gray-900: 255 255 255;       /* #ffffff app shell, top bar */
+  --gray-800: 245 245 245;       /* #f5f5f5 cards, sidebar wells */
+  --gray-700: 230 230 230;       /* #e6e6e6 borders, dividers */
+  --gray-600: 208 208 208;       /* #d0d0d0 heavy borders, slider track */
+  --gray-500: 160 160 160;       /* #a0a0a0 faint icons */
+  --gray-400: 107 107 107;       /* #6b6b6b muted body text */
+  --gray-300: 77 77 77;          /* #4d4d4d secondary text */
+  --gray-200: 44 44 44;          /* #2c2c2c near-foreground */
+  --gray-100: 26 26 26;          /* #1a1a1a strongest non-fg */
+
+  --color-bg: rgb(var(--stack-black));
+  --color-surface: rgb(var(--gray-800));
+  --color-surface-alt: rgb(var(--gray-700));
+  --color-border: rgb(var(--gray-600));
+  --color-text: rgb(var(--stack-white));
+  --color-text-muted: rgb(var(--gray-400));
+  --color-text-subtle: rgb(var(--gray-500));
+  --color-accent: rgb(var(--stack-fire));
+  --color-accent-hover: #ff7a5a;
+
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    margin: 0;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: 'Stara', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  input,
+  textarea {
+    user-select: text;
+    font-family: 'Stara', system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    /* gray-700 = dark in dark theme, light-grey in light theme */
+    background: rgb(var(--gray-700));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--gray-500));
+  }
+}
+
+@layer components {
+  .mono {
+    font-family: 'DM Mono', ui-monospace, monospace;
+  }
+
+  .surface {
+    background: var(--color-surface);
+  }
+
+  .border-subtle {
+    border-color: var(--color-border);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 11px;
+    line-height: 1;
+  }
+
+  .stack-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    height: 16px;
+    border-radius: 2px;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    touch-action: pan-y;
+  }
+
+  .stack-slider:focus-visible {
+    outline: 2px solid rgb(var(--stack-fire) / 0.7);
+    outline-offset: 2px;
+  }
+
+  .stack-slider::-webkit-slider-runnable-track {
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(
+      to right,
+      rgb(var(--stack-fire)) 0%,
+      rgb(var(--stack-fire)) var(--slider-pct, 0%),
+      rgb(var(--gray-600)) var(--slider-pct, 0%),
+      rgb(var(--gray-600)) 100%
+    );
+  }
+
+  .stack-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    margin-top: -5px; /* center thumb on 4px track */
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: rgb(var(--stack-fire));
+    border: 2px solid var(--color-bg);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+  }
+
+  .stack-slider::-moz-range-track {
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(var(--gray-600));
+  }
+
+  .stack-slider::-moz-range-progress {
+    height: 4px;
+    border-radius: 999px;
+    background: rgb(var(--stack-fire));
+  }
+
+  .stack-slider::-moz-range-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    background: rgb(var(--stack-fire));
+    border: 2px solid var(--color-bg);
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 0.45);
+  }
+
+  .stack-slider::-moz-focus-outer {
+    border: 0;
+  }
+
+  /* Overlay variant for dual-handle sliders:
+     keep only thumbs visible, hide each input's own track. */
+  .stack-slider-overlay::-webkit-slider-runnable-track {
+    background: transparent;
+  }
+  .stack-slider-overlay::-moz-range-track {
+    background: transparent;
+  }
+  .stack-slider-overlay {
+    pointer-events: none;
+  }
+  .stack-slider-overlay::-webkit-slider-thumb {
+    pointer-events: all;
+  }
+  .stack-slider-overlay::-moz-range-thumb {
+    pointer-events: all;
+  }
+}
+
+@layer utilities {
+  .drag-region {
+    -webkit-app-region: drag;
+    app-region: drag;
+  }
+
+  .no-drag {
+    -webkit-app-region: no-drag;
+    app-region: no-drag;
+  }
+
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+}
