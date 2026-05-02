@@ -24,12 +24,12 @@ const LEGACY_COVER_NAMES: &[&str] = &[
 /// scanner already skips dotfiles so it stays out of the index.
 const ARTWORK_EXTS: &[&str] = &["png", "jpg", "jpeg", "webp"];
 
-const STASH_DIR: &str = ".stack";
+const STACK_DIR: &str = ".stack";
 const PACK_META_FILE: &str = "pack.json";
 const MAX_ARTWORK_BYTES: usize = 8 * 1024 * 1024;
 
 fn stack_dir(pack_root: &Path) -> PathBuf {
-    pack_root.join(STASH_DIR)
+    pack_root.join(STACK_DIR)
 }
 
 fn find_user_cover(pack_root: &Path) -> Option<PathBuf> {
